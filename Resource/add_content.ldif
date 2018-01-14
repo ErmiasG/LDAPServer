@@ -6,19 +6,6 @@ dn: ou=Groups,dc=example,dc=com
 objectClass: organizationalUnit
 ou: Groups
 
-dn: cn=HR Managers,ou=groups,dc=example,dc=com
-objectClass: groupOfUniqueNames
-objectClass: top
-ou: groups
-description: People who can manage HR entries
-uniquemember: uid=george,ou=People,dc=example,dc=com
-cn: HR Managers
-
-dn: cn=ITpeople,ou=groups,dc=example,dc=com
-objectclass: groupOfURLs
-cn: ITpeople
-memberURL: ldap:///ou=People,dc=example,dc=com??sub?(ou=IT)
-
 dn: cn=miners,ou=Groups,dc=example,dc=com
 objectClass: posixGroup
 cn: miners
@@ -64,5 +51,15 @@ ou: Human Resources
 loginShell: /bin/bash
 homeDirectory: /home/george
 
+dn: cn=HR Managers,ou=groups,dc=example,dc=com
+objectClass: groupOfUniqueNames
+objectClass: top
+ou: groups
+description: People who can manage HR entries
+member: uid=george,ou=People,dc=example,dc=com
+cn: HR Managers
 
-
+dn: cn=ITpeople,ou=groups,dc=example,dc=com
+objectclass: groupOfURLs
+cn: ITpeople
+memberURL: ldap:///ou=People,dc=example,dc=com??sub?(ou=IT)

@@ -1,3 +1,4 @@
+
 dn: olcOverlay={1}memberof,olcDatabase={1}mdb,cn=config
 objectClass: olcConfig
 objectClass: olcMemberOf
@@ -6,8 +7,8 @@ objectClass: top
 olcOverlay: {1}memberof
 olcMemberOfDangling: ignore
 olcMemberOfRefInt: TRUE
-olcMemberOfGroupOC: groupOfUniqueNames
-olcMemberOfMemberAD: UniqueMember
+olcMemberOfGroupOC: groupOfNames
+olcMemberOfMemberAD: member
 olcMemberOfMemberOfAD: memberOf
 
 dn: olcOverlay={2}memberof,olcDatabase={1}mdb,cn=config
@@ -19,7 +20,7 @@ olcOverlay: {2}memberof
 olcMemberOfDangling: ignore
 olcMemberOfRefInt: TRUE
 olcMemberOfGroupOC: groupOfURLs
-olcMemberOfMemberAD: UniqueMember
+olcMemberOfMemberAD: member
 olcMemberOfMemberOfAD: memberOf
 
 dn: olcOverlay={3}refint,olcDatabase={1}mdb,cn=config
@@ -31,6 +32,8 @@ olcOverlay: {3}refint
 olcRefintAttribute: memberof member manager owner
 
 dn: olcOverlay={4}autogroup,olcDatabase={1}mdb,cn=config
+objectClass: olcConfig
+objectClass: olcOverlayConfig
 objectClass: olcAutomaticGroups
 olcOverlay: {4}autogroup
 olcAGattrSet: groupOfURLs memberURL member

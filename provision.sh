@@ -8,8 +8,8 @@ slapd slapd/password1 password $config_admin_password
 slapd slapd/password2 password $config_admin_password
 EOF
 
-sudo apt update
-sudo apt install -y --no-install-recommends slapd ldap-utils
+sudo apt-get update
+sudo apt-get install -y --no-install-recommends slapd ldap-utils
 
 sudo ldapadd -Q -Y EXTERNAL -H ldapi:/// -f /vagrant/Resource/config.ldif
 
@@ -27,4 +27,6 @@ sudo ldapmodify -Q -Y EXTERNAL -H ldapi:/// -f /vagrant/Resource/load_modules.ld
 
 sudo ldapadd -Q -Y EXTERNAL -H ldapi:/// -f /vagrant/Resource/add_modules.ldif
 
-ldapadd -x -D cn=admin,dc=example,dc=com -w $config_admin_password  -f /vagrant/Resource/add_content.ldif
+ldapadd -x -D cn=admin,dc=example,dc=com -w $config_admin_password  -f /vagrant/add_content.ldif
+
+ldapsearch -x -LLL -H ldap:/// -b dc=example,dc=com "(uid=ermias)" memberof
